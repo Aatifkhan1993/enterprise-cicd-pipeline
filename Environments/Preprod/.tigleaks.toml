@@ -1,0 +1,7 @@
+title = "Gitleaks Security Rules"
+
+[[rules]]
+id = "hardcoded-password"
+description = "Detect hardcoded passwords"
+regex = '''admin_password\s*=\s*"[^"]+"'''
+keywords = ["admin_password"]
