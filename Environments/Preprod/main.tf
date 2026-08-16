@@ -1,16 +1,16 @@
 
 module "resource_group" {
-  source ="../../Module/azurerm_resource_group"
-  rgs=var.rgs
+  source = "../../Module/azurerm_resource_group"
+  rgs    = var.rgs
 }
 
 module "virtual_network" {
-    source="../../Module/azurerm_virtual_network"
-    vnets = var.vnets
+  source = "../../Module/azurerm_virtual_network"
+  vnets  = var.vnets
 }
 
 module "subnet" {
-  source = "../../Module/azurerm_subnet"
+  source  = "../../Module/azurerm_subnet"
   subnets = var.subnets
 }
 
@@ -35,15 +35,15 @@ module "vm" {
 }
 
 module "network_security_group" {
-  source                  = "../../Module/azurerm_network_security_group"
-  nsgs                    = var.nsgs
-  depends_on              = [module.resource_group, module.virtual_network]
+  source     = "../../Module/azurerm_network_security_group"
+  nsgs       = var.nsgs
+  depends_on = [module.resource_group, module.virtual_network]
 }
 
 module "vnet_peering" {
-  source                      = "../../Module/azurerm_virtual_network_peering"
-  vnet_peerings               = var.vnet_peerings
-  depends_on                  = [module.virtual_network]
+  source        = "../../Module/azurerm_virtual_network_peering"
+  vnet_peerings = var.vnet_peerings
+  depends_on    = [module.virtual_network]
 }
 
 module "bastion" {

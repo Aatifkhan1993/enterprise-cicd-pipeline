@@ -7,12 +7,12 @@ terraform {
     }
   }
 }
-  # backend "azurerm" {
-  #   resource_group_name  = "aatif-rg"
-  #   storage_account_name = "aatifstorage"
-  #   container_name       = "tfstate"
-  #   key                  = "resource_group.tfstate"
-  # }
+# backend "azurerm" {
+#   resource_group_name  = "aatif-rg"
+#   storage_account_name = "aatifstorage"
+#   container_name       = "tfstate"
+#   key                  = "resource_group.tfstate"
+# }
 #}
 
 provider "azurerm" {

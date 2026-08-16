@@ -31,8 +31,8 @@ variable "subnet_nsg_associations" {
 }
 
 #variable "subnet_ids" {
-  #type = map(any)
-  # Remove this block if it is completely unused
+#type = map(any)
+# Remove this block if it is completely unused
 #}
 
 variable "bastions" {
@@ -40,8 +40,8 @@ variable "bastions" {
 }
 
 #variable "app_gateways" {
-  #type = map(any)
-  # Remove this block if it is completely unused
+#type = map(any)
+# Remove this block if it is completely unused
 #}
 
 variable "load_balancers" {
@@ -49,6 +49,6 @@ variable "load_balancers" {
 }
 
 variable "admin_password" {
-  type        = string
-  sensitive   = true
+  type      = string
+  sensitive = true
 }
