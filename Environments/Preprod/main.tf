@@ -1,16 +1,16 @@
 
 module "resource_group" {
-  source ="../../module/azurerm_resource_group"
+  source ="../../Module/azurerm_resource_group"
   rgs=var.rgs
 }
 
 module "virtual_network" {
-    source="../../module/azurerm_virtual_network"
+    source="../../Module/azurerm_virtual_network"
     vnets = var.vnets
 }
 
 module "subnet" {
-  source = "../../module/azurerm_subnet"
+  source = "../../Module/azurerm_subnet"
   subnets = var.subnets
 }
 
