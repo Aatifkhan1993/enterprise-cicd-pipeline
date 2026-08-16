@@ -1,8 +1,9 @@
-name: CI Pipeline
+name: Terraform CI
 
 on:
   push:
     branches:
+      - main
       - "feature/**"
 
   pull_request:
@@ -10,12 +11,29 @@ on:
       - main
 
 jobs:
-  ci:
+  terraform:
+    name: Terraform Validate and Plan
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: Environments/Preprod
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Run CI Check
-        run: echo "CI Pipeline executed successfully"
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Format Check
+        run: terraform fmt -check
+
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: Terraform Plan
+        run: terraform plan

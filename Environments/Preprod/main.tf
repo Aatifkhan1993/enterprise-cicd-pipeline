@@ -21,10 +21,11 @@ module "public_ips" {
 }
 
 module "vm" {
-  source     = "../../Module/azurerm_virtual_machine"
-  vms        = var.vms
-  
-  # 🔹 KEYS KO MAP KAREIN:
+  source = "../../Module/azurerm_virtual_machine"
+
+  vms            = var.vms
+  admin_password = var.admin_password
+
   subnet_ids = {
     "vm1" = module.subnet.subnet_ids["subnet1"]
     "vm2" = module.subnet.subnet_ids["subnet2"]
@@ -33,11 +34,9 @@ module "vm" {
   depends_on = [module.subnet, module.public_ips]
 }
 
-
 module "network_security_group" {
   source                  = "../../Module/azurerm_network_security_group"
   nsgs                    = var.nsgs
-  subnet_nsg_associations = var.subnet_nsg_associations
   depends_on              = [module.resource_group, module.virtual_network]
 }
 
