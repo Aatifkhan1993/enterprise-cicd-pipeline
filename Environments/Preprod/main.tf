@@ -47,7 +47,7 @@ module "vnet_peering" {
 }
 
 module "bastion" {
-  source     = "../../Module/azurerm_bastion"
+  source     = "../../Module/azurerm_Bastion"
   bastions   = var.bastions
   depends_on = [module.subnet, module.public_ips]
 }
